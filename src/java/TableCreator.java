@@ -1,7 +1,54 @@
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Random;
+
 public class TableCreator {
 
-    public static int[][] getTable() {
-        int[][] data = new int[9][9];
+    private static long counter;
+
+    private static int[][] data;
+
+    public static int[][] getSuccessRandomTable() {
+        LocalDateTime from = LocalDateTime.now();
+        boolean isValid;
+        int[][] data;
+        do {
+            data = getRandomTable();
+            isValid = TableValidator.check(data);
+            TableOut.printTable(data);
+        }
+        while (!isValid);
+        LocalDateTime to = LocalDateTime.now();
+        System.out.println("Заняло времени в секундах " + Duration.between(from, to).toSeconds());
+        return data;
+
+    }
+
+    private static int[][] getRandomTable() {
+        int[][] data = new int[Constants.TABLE_SIZE][Constants.TABLE_SIZE];
+        final int min = 1; // Минимальное число для диапазона
+        final int max = 9; // Максимальное число для диапазона
+        int[] line = new int[data.length];
+
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data.length; j++) {
+                int rnd = rnd(min, max);
+                data[i][j] = rnd;
+            }
+
+        }
+        counter++;
+        System.out.println("Игровых досок создано " + counter);
+        return data;
+    }
+
+    private static int rnd(int min, int max) {
+        max -= min;
+        return (int) (Math.random() * ++max) + min;
+    }
+
+    private static int[][] getSuccessTable() {
+        int[][] data = new int[Constants.TABLE_SIZE][Constants.TABLE_SIZE];
         data[0][0] = 2;
         data[0][1] = 1;
         data[0][2] = 9;

@@ -1,4 +1,4 @@
-public class Service {
+public class TableValidator {
     /**
      * Правила игры
      * 1. Цифры в линиях по гор. и верт. не должны повторяться т.е.
@@ -7,7 +7,6 @@ public class Service {
      * 2. Цифры в малом квадрате не должны повторяться;
      * 3. Кол-во строк и столбцов равно 9.
      */
-
     public static boolean check(int[][] table) {
         int[] line = new int[table.length];
         /*Открываем цикл по строкам*/
@@ -19,6 +18,8 @@ public class Service {
             if (!checkLine(line)) {
                 return false;
             }
+
+
         }
 
         /*Открываем цикл по столбцам*/
@@ -30,7 +31,9 @@ public class Service {
             if (!checkLine(line)) {
                 return false;
             }
+
         }
+
         return true;
     }
 
@@ -49,9 +52,9 @@ public class Service {
      *             в виде одномерного массива;
      * @return уникальность цифр в линии;
      */
-    private static boolean checkLine(int[] line) {
+    public static boolean checkLine(int[] line) {
         for (int i = 0; i < line.length; i++) {
-            int k = line[i];
+            int k = line[i]; // 111
             //System.out.println("i = " + i + " K = " + k);
             for (int j = i + 1; j < line.length; j++) {
                 //System.out.println("j = " + j + " line[j] = " + line[j]);
