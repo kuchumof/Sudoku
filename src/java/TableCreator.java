@@ -1,30 +1,27 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Random;
 
 public class TableCreator {
 
-    private static long counter;
-
+    private static long counter; // для подсчета созданных игровых досок
     private static int[][] data;
 
-    public static int[][] getSuccessRandomTable() {
+    public static int[][] getSuccessRandomTable() { // проверка созданного игрового поля, на правильность заполнения
         LocalDateTime from = LocalDateTime.now();
         boolean isValid;
         int[][] data;
         do {
             data = getRandomTable();
-            isValid = TableValidator.check(data);
+            isValid = TableValidator.checkTable(data);
             TableOut.printTable(data);
         }
         while (!isValid);
         LocalDateTime to = LocalDateTime.now();
         System.out.println("Заняло времени в секундах " + Duration.between(from, to).toSeconds());
         return data;
-
     }
 
-    private static int[][] getRandomTable() {
+    private static int[][] getRandomTable() { //создание игрового поля
         int[][] data = new int[Constants.TABLE_SIZE][Constants.TABLE_SIZE];
         final int min = 1; // Минимальное число для диапазона
         final int max = 9; // Максимальное число для диапазона
@@ -42,12 +39,12 @@ public class TableCreator {
         return data;
     }
 
-    private static int rnd(int min, int max) {
+    private static int rnd(int min, int max) { //генерация случайного числа от 1 до 9
         max -= min;
         return (int) (Math.random() * ++max) + min;
     }
 
-    private static int[][] getSuccessTable() {
+    private static int[][] getSuccessTable() { //игровое поле из Sudoku board.JPG
         int[][] data = new int[Constants.TABLE_SIZE][Constants.TABLE_SIZE];
         data[0][0] = 2;
         data[0][1] = 1;

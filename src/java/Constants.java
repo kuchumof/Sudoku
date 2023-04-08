@@ -1,5 +1,5 @@
 public class Constants {
 
-    /*размер поля*/
-    public static final int TABLE_SIZE = 8;
+
+    public static final int TABLE_SIZE = 9; // размер поля
 }
