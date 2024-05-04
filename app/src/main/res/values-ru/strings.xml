@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Судоку</string>
+    <string name="undo">Отменить</string>
+    <string name="erase">Стереть</string>
+    <string name="notes">Заметка</string>
+    <string name="hint">Подсказка</string>
+    <string name="back">Назад</string>
+    <string name="settings">Настройки</string>
+</resources>
